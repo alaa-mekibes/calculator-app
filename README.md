@@ -11,15 +11,15 @@ Users should be able to:
 - See the size of the elements adjust based on their device's screen size
 - Perform mathmatical operations like addition, subtraction, multiplication, and division
 - Adjust the color theme based on their preference
-- 
+
 ### Screenshot
 
 ![](/assets/images/screenShot.png)
 
 ### Links
 
-- [Solution URL](https://your-solution-url.com)
-- [Live Site URL](https://your-live-site-url.com)
+- [Solution URL](https://www.frontendmentor.io/solutions/calculator-app-SK4y72-kps)
+- [Live Site URL](https://cleancalculator.vercel.app)
 
 ## My process
 
@@ -41,7 +41,7 @@ Users should be able to:
 eval("50 + 50");
 ```
 
-There is a small error when I write eval("02 + 0003"). It converts the numbers to octal because of the leading zeros. To solve this, I removed the unnecessary zeros before the numbers using the following regex:
+There is a small error when I write `eval("02 + 0003")`. It converts the numbers to octal because of the leading zeros. To solve this, I removed the unnecessary zeros before the numbers using the following `regex`:
 
 ```js
 theEquation = theEquation.replace(/([+\-*/])0+(\d+)/g, "$1$2");

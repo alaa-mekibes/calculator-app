@@ -64,7 +64,7 @@ class calc {
                 lastSelectedOp = op.target.textContent;
             }
             this.preOperator.textContent = arrayNbr.join("");
-        const includesInArrayNbr = arrayNbr.filter(op => operators.includes(op)).length;
+        const includesInArrayNbr = arrayNbr.filter(el => operators.includes(el)).length;
         if(includesInArrayNbr > 1 && operators.includes(this.preOperator.textContent.slice(-1))) {
             this.preOperator.textContent = this.calcTheInput(arrayNbr, -1);
             arrayNbr = [];
@@ -75,7 +75,7 @@ class calc {
     }))
 
     this.del.addEventListener("click", () => {
-        if(this.output.value.slice(0, -1) != "" || !isNaN(arrayNbr[arrayNbr.length - 1])) {
+        if(this.output.value.slice(0, -1) !== "" || !isNaN(arrayNbr[arrayNbr.length - 1])) {
         arrayNbr.pop();
         }
         this.output.value = this.output.value.slice(0, -1);

@@ -79,7 +79,6 @@ body {
 }
 .themes-toggle__radio {
     all: unset;
-    cursor: none;
     min-width: 10px;
     min-height: 10px;
     border-radius: 50%;

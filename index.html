@@ -17,16 +17,16 @@
     <div class="themes">
     <span class="themes__txt">theme</span>
     <div class="themes-toggle">
-    <button type="button" data-nbr="1"  class="themes-toggle__radio themes-toggle__radio--active" id="th-1"></button>
-    <button type="button" data-nbr="2" class="themes-toggle__radio" id="th-2"></button>
-    <button type="button" data-nbr="3" class="themes-toggle__radio" id="th-3"></button>
+    <button type="button" aria-label="theme 1" data-nbr="1"  class="themes-toggle__radio themes-toggle__radio--active" id="th-1"></button>
+    <button type="button" aria-label="theme 2" data-nbr="2" class="themes-toggle__radio" id="th-2"></button>
+    <button type="button" aria-label="theme 3" data-nbr="3" class="themes-toggle__radio" id="th-3"></button>
       </div>
     </div>
   </header>
   <main class="calc-main">
     <article class="result-container">
       <span class="result-container__op"></span>
-      <input type="text" class="result-container__result">
+      <input type="text" readonly aria-label="calc screen" class="result-container__result">
     </article>
     <section class="keys-container">
       <article class="calc-row">
