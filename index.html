@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap" rel="stylesheet">  
+  <link rel="stylesheet" href="assets/css/style.css">
+  <title>Frontend Mentor | Calculator app</title>
+</head>
+<body>
+  <div class="container">
+    <header class="calc-header">
+    <h1 class="calc-header__title">calc</h1>
+    <div class="themes">
+    <span class="themes__txt">theme</span>
+    <div class="themes-toggle">
+    <button type="button" data-nbr="1"  class="themes-toggle__radio themes-toggle__radio--active" id="th-1"></button>
+    <button type="button" data-nbr="2" class="themes-toggle__radio" id="th-2"></button>
+    <button type="button" data-nbr="3" class="themes-toggle__radio" id="th-3"></button>
+      </div>
+    </div>
+  </header>
+  <main class="calc-main">
+    <article class="result-container">
+      <span class="result-container__op"></span>
+      <input type="text" class="result-container__result">
+    </article>
+    <section class="keys-container">
+      <article class="calc-row">
+        <button class="calc-row__nbr" type="button">7</button>
+        <button class="calc-row__nbr" type="button">8</button>
+        <button class="calc-row__nbr" type="button">9</button>
+        <button class="calc-row__del" type="button">del</button>
+      </article>
+        <article class="calc-row">
+        <button class="calc-row__nbr" type="button">4</button>
+        <button class="calc-row__nbr" type="button">5</button>
+        <button class="calc-row__nbr" type="button">6</button>
+        <button class="calc-row__op" type="button">+</button>
+      </article>
+        <article class="calc-row">
+        <button class="calc-row__nbr" type="button">1</button>
+        <button class="calc-row__nbr" type="button">2</button>
+        <button class="calc-row__nbr" type="button">3</button>
+        <button class="calc-row__op" type="button">-</button>
+      </article>
+        <article class="calc-row">
+        <button class="calc-row__nbr" type="button">.</button>
+        <button class="calc-row__nbr" type="button">0</button>
+        <button class="calc-row__op" type="button">/</button>
+        <button class="calc-row__op" type="button">*</button>
+      </article>
+      <article class="calc-action">
+        <button class="calc-action__reset" type="button">reset</button>
+        <button class="calc-action__equal" type="button">=</button>
+      </article>
+    </section>
+  </main>
+  </div>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
