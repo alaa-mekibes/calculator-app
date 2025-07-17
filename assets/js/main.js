@@ -37,6 +37,7 @@ class calc {
             if(nbr.target.textContent === ".") {
                 if(this.output.value.includes(".")) return;
                 if(this.output.value === "") return;
+                if(operators.includes(lastSelectedOp)) return;
             }
             if(!operators.includes(lastSelectedOp) && !this.preOperator.textContent) {
                 arrayNbr.push(nbr.target.textContent);
@@ -64,6 +65,7 @@ class calc {
                 lastSelectedOp = op.target.textContent;
             }
             this.preOperator.textContent = arrayNbr.join("");
+            this.output.value = "";
         const includesInArrayNbr = arrayNbr.filter(el => operators.includes(el)).length;
         if(includesInArrayNbr > 1 && operators.includes(this.preOperator.textContent.slice(-1))) {
             this.preOperator.textContent = this.calcTheInput(arrayNbr, -1);
