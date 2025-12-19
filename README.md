@@ -19,7 +19,7 @@ Users should be able to:
 ### Links
 
 - [Solution URL](https://www.frontendmentor.io/solutions/calculator-app-SK4y72-kps)
-- [Live Site URL](https://cleancalculator.vercel.app)
+- [Live Site URL](https://clean1calculator.netlify.app/)
 
 ## My process
 
