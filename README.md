@@ -1,6 +1,6 @@
 # Frontend Mentor - Calculator app solution
 
-This is a solution to the [Calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Overview
 
@@ -35,10 +35,17 @@ Users should be able to:
 
 ### What I learned
 
-- To convert a string to an integer and calculate an equation, I used the following code:
+- How to safely evaluate a mathematical expression from a string without using eval, by validating the input and executing it in a restricted scope:
 
 ```js
-eval("50 + 50");
+function safeEval(expr) {
+  if (!/^[0-9+\-*/().\s]+$/.test(expr)) {
+    alert("Invalid expression");
+  }
+  return Function(`"use strict"; return (${expr})`)();
+}
+
+safeEval("50 + 50"); // → 100
 ```
 
 There is a small error when I write `eval("02 + 0003")`. It converts the numbers to octal because of the leading zeros. To solve this, I removed the unnecessary zeros before the numbers using the following `regex`:

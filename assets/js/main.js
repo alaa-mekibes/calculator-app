@@ -7,7 +7,7 @@ class themes {
     themesSwitcher() {
         this.themesToggle.forEach((th) => th.addEventListener("click", (btn) => {
             const currentTheme = document.querySelector(".themes-toggle__radio--active");
-            if(btn.target !== currentTheme.id) {
+            if (btn.target !== currentTheme.id) {
                 currentTheme.classList.remove("themes-toggle__radio--active");
                 btn.target.classList.add("themes-toggle__radio--active");
                 this.root.classList.remove("th-1", "th-2", "th-3");
@@ -34,28 +34,28 @@ class calc {
         const operators = ["+", "-", "/", "*"];
         this.numbers.forEach((key) => key.addEventListener("click", (nbr) => {
             let lastSelectedOp = arrayNbr[arrayNbr.length - 1];
-            if(nbr.target.textContent === ".") {
-                if(this.output.value.includes(".")) return;
-                if(this.output.value === "") return;
-                if(operators.includes(lastSelectedOp)) return;
+            if (nbr.target.textContent === ".") {
+                if (this.output.value.includes(".")) return;
+                if (this.output.value === "") return;
+                if (operators.includes(lastSelectedOp)) return;
             }
-            if(!operators.includes(lastSelectedOp) && !this.preOperator.textContent) {
+            if (!operators.includes(lastSelectedOp) && !this.preOperator.textContent) {
                 arrayNbr.push(nbr.target.textContent);
                 this.output.value = arrayNbr.join("");
-            } 
-            if(this.preOperator.textContent) {
+            }
+            if (this.preOperator.textContent) {
                 arrayNbr.push(nbr.target.textContent);
                 newNbr += nbr.target.textContent;
                 this.output.value = newNbr;
             }
         }));
-        
+
         this.operators.forEach((key) => key.addEventListener("click", (op) => {
             let lastSelectedOp = arrayNbr[arrayNbr.length - 1];
-            if(operators.includes(op.target.textContent) && this.output.value === "") {
+            if (operators.includes(op.target.textContent) && this.output.value === "") {
                 return;
             }
-            if(operators.includes(lastSelectedOp)) {
+            if (operators.includes(lastSelectedOp)) {
                 arrayNbr[arrayNbr.length - 1] = op.target.textContent;
                 lastSelectedOp = op.target.textContent;
             }
@@ -66,65 +66,75 @@ class calc {
             }
             this.preOperator.textContent = arrayNbr.join("");
             this.output.value = "";
-        const includesInArrayNbr = arrayNbr.filter(el => operators.includes(el)).length;
-        if(includesInArrayNbr > 1 && operators.includes(this.preOperator.textContent.slice(-1))) {
-            this.preOperator.textContent = this.calcTheInput(arrayNbr, -1);
-            arrayNbr = [];
-            arrayNbr.push(this.preOperator.textContent);
-            arrayNbr.push(op.target.textContent);
-            this.preOperator.textContent += op.target.textContent;
-        }
-    }))
+            const includesInArrayNbr = arrayNbr.filter(el => operators.includes(el)).length;
+            if (includesInArrayNbr > 1 && operators.includes(this.preOperator.textContent.slice(-1))) {
+                this.preOperator.textContent = this.calcTheInput(arrayNbr, -1);
+                arrayNbr = [];
+                arrayNbr.push(this.preOperator.textContent);
+                arrayNbr.push(op.target.textContent);
+                this.preOperator.textContent += op.target.textContent;
+            }
+        }))
 
-    this.del.addEventListener("click", () => {
-        if(this.output.value.slice(0, -1) !== "" || !isNaN(arrayNbr[arrayNbr.length - 1])) {
-        arrayNbr.pop();
-        }
-        this.output.value = this.output.value.slice(0, -1);
-        newNbr = newNbr.slice(0, -1);
-    })
-    
-    this.reset.addEventListener("click", () => {
-        this.output.value = "";
-        this.preOperator.textContent = "";
-        arrayNbr = [];
-        newNbr = "";
-        this.numbers.forEach(el => el.classList.remove("divideByZero"));
-        this.operators.forEach(el => el.classList.remove("divideByZero"));
-        this.del.classList.remove("divideByZero");
-        this.equal.classList.remove("divideByZero");
-    })
-    
-    this.equal.addEventListener("click", () => {
-        if(!(/(\d+)([+\-*/])(\d+)/g).test(arrayNbr.join(""))) return;
-        this.preOperator.textContent = "";
-        console.log(arrayNbr)
-        console.log(this.correctEquation(arrayNbr))
-        this.output.value = this.calcTheInput(arrayNbr, 1);
-        arrayNbr = [];
-        arrayNbr.push(...this.output.value.split(""));
-        console.log(arrayNbr)
+        this.del.addEventListener("click", () => {
+            if (this.output.value.slice(0, -1) !== "" || !isNaN(arrayNbr[arrayNbr.length - 1])) {
+                arrayNbr.pop();
+            }
+            this.output.value = this.output.value.slice(0, -1);
+            newNbr = newNbr.slice(0, -1);
+        })
+
+        this.reset.addEventListener("click", () => {
+            this.output.value = "";
+            this.preOperator.textContent = "";
+            arrayNbr = [];
+            newNbr = "";
+            this.numbers.forEach(el => el.classList.remove("divideByZero"));
+            this.operators.forEach(el => el.classList.remove("divideByZero"));
+            this.del.classList.remove("divideByZero");
+            this.equal.classList.remove("divideByZero");
+        })
+
+        this.equal.addEventListener("click", () => {
+            if (!(/(\d+)([+\-*/])(\d+)/g).test(arrayNbr.join(""))) return;
+            this.preOperator.textContent = "";
+            console.log(arrayNbr)
+            console.log(this.correctEquation(arrayNbr))
+            this.output.value = this.calcTheInput(arrayNbr, 1);
+            arrayNbr = [];
+            arrayNbr.push(...this.output.value.split(""));
+            console.log(arrayNbr)
             newNbr = "";
         })
     }
     correctEquation(arrayNbr, all = -1) {
         let theEquation = ((all === -1) ? arrayNbr.slice(0, -1) : arrayNbr).map(function (el) {
-                if(!isNaN(el)) return String(Number(el));
-                else return el;
-            }).join("");
-            console.log(theEquation)
+            if (!isNaN(el)) return String(Number(el));
+            else return el;
+        }).join("");
+        console.log(theEquation)
         theEquation = theEquation.replace(/([+\-*/])0+(\d+)/g, "$1$2");
         return theEquation;
     }
+
+    safeEval(expr) {
+        if (!/^[0-9+\-*/().\s]+$/.test(expr)) {
+            alert("Invalid expression");
+        }
+        return Function(`"use strict"; return (${expr})`)();
+    }
+
+
     calcTheInput(input, all) {
-        if((/(\d+)\/(0+)/g).test(input.join(""))) {
+        if ((/(\d+)\/(0+)/g).test(input.join(""))) {
             this.numbers.forEach(el => el.classList.add("divideByZero"));
             this.operators.forEach(el => el.classList.add("divideByZero"));
             this.del.classList.add("divideByZero");
             this.equal.classList.add("divideByZero");
             return "Cannot divide by zero";
         }
-        return eval(this.correctEquation(input, all));
+        const expr = this.correctEquation(input, all);
+        return this.safeEval(expr);
     }
 }
 
